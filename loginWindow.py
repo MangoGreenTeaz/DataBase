@@ -20,6 +20,7 @@ class Login:
         self.ui.button_confirmRegister.clicked.connect(self.clickButton_confirmRegister)
         self.ui.lineEdit_Phone.returnPressed.connect(self.clickButton_confirmRegister)
 
+    # 用户登录
     def clickButton_login(self):
         account = self.ui.lineEdit_loginAccount.text().strip()
         password = self.ui.lineEdit_loginPassword.text().strip()
@@ -46,6 +47,7 @@ class Login:
         except  Exception as e:
             print('出错类型：', type(e))
 
+    # 用户注册
     def clickButton_confirmRegister(self):
         registerAccount = self.ui.lineEdit_registerAccount.text().strip()
         registerPassword = self.ui.lineEdit_registerPassword.text().strip()
