@@ -1,3 +1,15 @@
+# -*- encoding: utf-8 -*-
+
+'''
+@File    :   loginWindow.py
+@Time    :   2021/09/08 10:56:45
+@Author  :   Hu Lei 
+@Version :   1.0
+@Contact :   hulei15082452670@gmail.com
+@Desc    :   None
+'''
+
+# import lib
 from PySide2.QtWidgets import QApplication, QMessageBox
 from PySide2.QtUiTools import QUiLoader
 from lib.connect import MySQLdb
