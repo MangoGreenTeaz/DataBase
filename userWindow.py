@@ -10,8 +10,9 @@
 '''
 
 # import lib
-from PySide2.QtWidgets import QApplication, QTableWidgetItem, QMessageBox
+from PySide2.QtWidgets import QApplication, QTableWidgetItem, QMessageBox, QPushButton, QWidget, QHBoxLayout 
 from PySide2.QtUiTools import QUiLoader
+from PySide2 import QtCore
 from lib.connect import MySQLdb
 import pymysql
 
@@ -74,19 +75,65 @@ class User:
         self.ui.tableWidget_commodity.setColumnWidth(8, 150)
 
         # 设置表头
-        self.ui.tableWidget_commodity.setHorizontalHeaderLabels(['图片', '条形码', '商品名称', '商品品牌', '净含量(g/ml)', '商品种类', '商品库存', '单价(元)', '操作'])
-
+        self.ui.tableWidget_commodity.setHorizontalHeaderLabels(
+            ['图片', '条形码', '商品名称', '商品品牌', '净含量(g/ml)', '商品种类', '商品库存', '单价(元)', '操作'])
         self.ui.tableWidget_commodity.horizontalHeader().setStyleSheet(
             "QHeaderView::section{background-color:rgb(155, 194, 230);font:11pt '宋体';color: black;};")
 
         # 插入数据
         for i in range(row):
+            self.ui.tableWidget_commodity.setCellWidget(i, 8,self.buttonForRow(str(result_getCommodity[0])))
             for j in range(vol):
-                temp_data=result_getCommodity[i][j]  #临时记录，不能直接插入表格
-                data = QTableWidgetItem(str(temp_data)) #转换后可插入表格
+                # 临时记录，不能直接插入表格，转换后可插入表格
+                temp_data=result_getCommodity[i][j]
+                # 转换
+                data = QTableWidgetItem(str(temp_data)) 
+                # 插入
                 self.ui.tableWidget_commodity.setItem(i,j+1,data)
+                # 居中
+                self.ui.tableWidget_commodity.item(i,j+1).setTextAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter);
 
 
+    # 列表内添加按钮
+    def buttonForRow(self,id):
+        widget=QWidget()
+        # 修改
+        button_update = QPushButton('+')
+        button_update.setStyleSheet(''' text-align : center;
+                                          background-color : NavajoWhite;
+                                          height : 30px;
+                                          border-style: outset;
+                                          font : 13px  ''')
+
+        button_update.clicked.connect(lambda:self.updateTable(id))
+
+        # 查看
+        button_view = QPushButton('-')
+        button_view.setStyleSheet(''' text-align : center;
+                                  background-color : DarkSeaGreen;
+                                  height : 30px;
+                                  border-style: outset;
+                                  font : 13px; ''')
+
+        button_view.clicked.connect(lambda: self.viewTable(id))
+
+        # 删除
+        button_delete = QPushButton('清空')
+        button_delete.setStyleSheet(''' text-align : center;
+                                    background-color : LightCoral;
+                                    height : 30px;
+                                    border-style: outset;
+                                    font : 13px; ''')
+
+
+        hLayout = QHBoxLayout()
+        hLayout.addWidget(button_update)
+
+        hLayout.addWidget(button_view)
+        hLayout.addWidget(button_delete)
+        hLayout.setContentsMargins(5,2,5,2)
+        widget.setLayout(hLayout)
+        return widget
 
 
 
