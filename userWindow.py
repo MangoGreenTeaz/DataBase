@@ -13,6 +13,8 @@
 from PySide2.QtWidgets import QApplication, QTableWidgetItem, QMessageBox, QPushButton, QWidget, QHBoxLayout 
 from PySide2.QtUiTools import QUiLoader
 from PySide2 import QtCore
+from PySide2.QtWidgets import QApplication, QTableWidgetItem, QMessageBox
+from PySide2.QtUiTools import QUiLoader
 from lib.connect import MySQLdb
 import pymysql
 
@@ -74,9 +76,13 @@ class User:
         self.ui.tableWidget_commodity.setColumnWidth(7, 150)
         self.ui.tableWidget_commodity.setColumnWidth(8, 150)
 
+
         # 设置表头
         self.ui.tableWidget_commodity.setHorizontalHeaderLabels(
             ['图片', '条形码', '商品名称', '商品品牌', '净含量(g/ml)', '商品种类', '商品库存', '单价(元)', '操作'])
+
+        self.ui.tableWidget_commodity.setHorizontalHeaderLabels(['图片', '条形码', '商品名称', '商品品牌', '净含量(g/ml)', '商品种类', '商品库存', '单价(元)', '操作'])
+
         self.ui.tableWidget_commodity.horizontalHeader().setStyleSheet(
             "QHeaderView::section{background-color:rgb(155, 194, 230);font:11pt '宋体';color: black;};")
 
@@ -134,6 +140,9 @@ class User:
         hLayout.setContentsMargins(5,2,5,2)
         widget.setLayout(hLayout)
         return widget
+
+
+
 
 
 
