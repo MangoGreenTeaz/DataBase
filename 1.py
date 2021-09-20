@@ -1,35 +1,46 @@
-# -*- encoding: utf-8 -*-
+from PyQt5.QtCore import QThread ,  pyqtSignal,  QDateTime , QObject
+from PyQt5.QtWidgets import QApplication,  QDialog,  QLineEdit
+import time
+import sys
 
-'''
-@File    :   userWindow.py
-@Time    :   2021/09/08 15:29:01
-@Author  :   Hu Lei 
-@Version :   1.0
-@Contact :   hulei15082452670@gmail.com
-@Desc    :   None
-'''
+class BackendThread(QObject):
+    # 通过类成员对象定义信号
+    update_date = pyqtSignal(str)
+    
+    # 处理业务逻辑
+    def run(self):
+        while True:
+            data = QDateTime.currentDateTime()
+            currTime = data.toString("yyyy-MM-dd hh:mm:ss")
+            self.update_date.emit( str(currTime) )
+            time.sleep(1)
 
-# import lib
-from PySide2.QtWidgets import QApplication, QTableWidgetItem, QMessageBox, QPushButton, QWidget, QHBoxLayout 
-from PySide2.QtUiTools import QUiLoader
-from PySide2 import QtCore
-from lib.connect import MySQLdb
-import pymysql
+class Window(QDialog):
+    def __init__(self):
+        QDialog.__init__(self)
+        self.setWindowTitle('PyQt 5界面实时更新例子')
+        self.resize(400, 100)
+        self.input = QLineEdit(self)
+        self.input.resize(400, 100)
+        self.initUI()
 
-con = MySQLdb()
-cur = con.cursor(cursor=pymysql.cursors.DictCursor)
+    def initUI(self):
+        # 创建线程
+        self.backend = BackendThread()
+        # 连接信号
+        self.backend.update_date.connect(self.handleDisplay)
+        self.thread = QThread()
+        self.backend.moveToThread(self.thread)
+        # 开始线程
+        self.thread.started.connect(self.backend.run)
+        self.thread.start()
 
+    # 将当前时间输出到文本框
+    def handleDisplay(self, data):
+        self.input.setText(data)
 
-
-
-
-
-
-
-
-
-SQL_getCommodity = 'SELECT commodity.ID,commodity.Names,commodity.Brand,commodity.Weights,commodity.Types,stock.Amount,commodity.Price FROM commodity,stock WHERE commodity.ID = stock.commodityID AND stock.shopID = %s;'
-cur1 = con.cursor()
-cur1.execute(SQL_getCommodity,[1])
-result_getCommodity = cur1.fetchall()
-print(result_getCommodity)
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    win = Window()
+    win.show() 
+    sys.exit(app.exec_())

@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="page_commodity">
     <widget class="QTableWidget" name="tableWidget_commodity">
@@ -59,11 +59,53 @@
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="page_2"/>
-   <widget class="QWidget" name="page_3"/>
-   <widget class="QWidget" name="page_4"/>
+   <widget class="QWidget" name="page_2">
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>260</y>
+       <width>451</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>购物车</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_3">
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>250</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>订单</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_4">
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>260</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>我的</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="button_commodity">
    <property name="geometry">
     <rect>
      <x>710</x>
@@ -76,7 +118,7 @@
     <string>商品</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="button_order">
    <property name="geometry">
     <rect>
      <x>1100</x>
@@ -89,7 +131,7 @@
     <string>订单</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="button_mine">
    <property name="geometry">
     <rect>
      <x>1460</x>
@@ -112,7 +154,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="button_shoppingCart">
    <property name="geometry">
     <rect>
      <x>950</x>

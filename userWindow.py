@@ -24,10 +24,14 @@ cur = con.cursor(cursor=pymysql.cursors.DictCursor)
 
 class User:
 
-    def __init__(self):
+    def __init__(self, userID):
         # 从文件中加载UI
         self.ui = QUiLoader().load('./ui/userWindow.ui')
-
+        self.ui.button_commodity.clicked.connect(self.clickButton_commodity)
+        self.ui.button_shoppingCart.clicked.connect(self.clickButton_shoppingCart)
+        self.ui.button_order.clicked.connect(self.clickButton_order)
+        self.ui.button_mine.clicked.connect(self.clickButton_mine)
+        userId = self.userID
         #
         self.addShop()
         self.ui.comboBox_shop.currentIndexChanged.connect(self.shopChanged)
@@ -36,6 +40,19 @@ class User:
         self.setTable_commodity()
 
     # 分店选择
+
+    def clickButton_commodity(self):
+        self.ui.stackedWidget.setCurrentIndex(0)
+    def clickButton_shoppingCart(self):
+        self.ui.stackedWidget.setCurrentIndex(1)
+    def clickButton_order(self):
+        self.ui.stackedWidget.setCurrentIndex(2)
+    def clickButton_mine(self):
+        self.ui.stackedWidget.setCurrentIndex(3)
+
+
+
+
 
     def addShop(self):
         SQL_getShops = 'SELECT * FROM shop;'
@@ -124,19 +141,10 @@ class User:
 
         button_view.clicked.connect(lambda: self.viewTable(id))
 
-        # 清空
-        button_delete = QPushButton('清空')
-        button_delete.setStyleSheet(''' text-align : center;
-                                    background-color : LightCoral;
-                                    height : 30px;
-                                    border-style: outset;
-                                    font : 13px; ''')
 
         hLayout = QHBoxLayout()
         hLayout.addWidget(button_update)
-
         hLayout.addWidget(button_view)
-        hLayout.addWidget(button_delete)
         hLayout.setContentsMargins(5, 2, 5, 2)
         widget.setLayout(hLayout)
         return widget
