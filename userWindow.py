@@ -105,7 +105,7 @@ class User:
     # 列表内添加按钮
     def buttonForRow(self, id):
         widget = QWidget()
-        # 修改
+        # 添加
         button_update = QPushButton('+')
         button_update.setStyleSheet(''' text-align : center;
                                           background-color : NavajoWhite;
@@ -115,7 +115,7 @@ class User:
 
         button_update.clicked.connect(lambda: self.updateTable(id))
 
-        # 查看
+        # 减少
         button_view = QPushButton('-')
         button_view.setStyleSheet(''' text-align : center;
                                   background-color : DarkSeaGreen;
@@ -125,7 +125,7 @@ class User:
 
         button_view.clicked.connect(lambda: self.viewTable(id))
 
-        # 删除
+        # 清空
         button_delete = QPushButton('清空')
         button_delete.setStyleSheet(''' text-align : center;
                                     background-color : LightCoral;
