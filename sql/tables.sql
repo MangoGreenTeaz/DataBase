@@ -182,6 +182,27 @@ CREATE TABLE STOCK(
     CONSTRAINT FK_STOCK_TO_SHOP FOREIGN KEY (SHOPID) REFERENCES SHOP(ID)
 );
 
+-- 购物车
+CREATE TABLE ShoppingCart(
+    COMMODITYID VARCHAR(13),
+    -- 商品ID
+    SHOPID BIGINT,
+    -- 分店ID
+    AmountOfCommodity BIGINT NOT NULL,
+    -- 数量
+    AmountOfMoney BIGINT NOT NULL,
+    -- 金额
+
+
+    CHECK(AmountOfCommodity >= 0),
+    -- 检查数量是否合法
+    CHECK(AmountOfMoney >= 0),
+    -- 检查数量是否合法
+    CONSTRAINT FK_ShoppingCart_TO_COMMODITY FOREIGN KEY (COMMODITYID) REFERENCES COMMODITY(ID),
+    CONSTRAINT FK_ShoppingCart_TO_SHOP FOREIGN KEY (SHOPID) REFERENCES SHOP(ID)
+);
+
+
 
 
 -- 线上订单
