@@ -184,9 +184,11 @@ CREATE TABLE STOCK(
 
 -- 购物车
 CREATE TABLE ShoppingCart(
-    COMMODITYID VARCHAR(13),
+    COMMODITYID VARCHAR(13) NOT NULL,
     -- 商品ID
-    SHOPID BIGINT,
+    USERID BIGINT NOT NULL,
+    -- 用户ID
+    SHOPID BIGINT NOT NULL,
     -- 分店ID
     AmountOfCommodity BIGINT NOT NULL,
     -- 数量
@@ -198,11 +200,12 @@ CREATE TABLE ShoppingCart(
     -- 检查数量是否合法
     CHECK(AmountOfMoney >= 0),
     -- 检查数量是否合法
+    CONSTRAINT FK_ShoppingCart_TO_USERS FOREIGN KEY (USERID) REFERENCES USERS(ID),
     CONSTRAINT FK_ShoppingCart_TO_COMMODITY FOREIGN KEY (COMMODITYID) REFERENCES COMMODITY(ID),
     CONSTRAINT FK_ShoppingCart_TO_SHOP FOREIGN KEY (SHOPID) REFERENCES SHOP(ID)
 );
 
-
+delete From ShoppingCart WHERE userid = 1;
 
 
 -- 线上订单

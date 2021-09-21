@@ -344,6 +344,22 @@
       </font>
      </property>
     </widget>
+    <widget class="QLineEdit" name="lineEdit_sex">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>160</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+    </widget>
     <widget class="QLineEdit" name="lineEdit_nickName">
      <property name="geometry">
       <rect>
@@ -375,24 +391,8 @@
        <pointsize>16</pointsize>
       </font>
      </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_sex">
-     <property name="geometry">
-      <rect>
-       <x>210</x>
-       <y>160</y>
-       <width>181</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>16</pointsize>
-      </font>
-     </property>
      <property name="placeholderText">
-      <string>男 / 女</string>
+      <string/>
      </property>
     </widget>
     <widget class="QLineEdit" name="lineEdit_Phone">

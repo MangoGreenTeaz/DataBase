@@ -11,6 +11,7 @@ cur = con.cursor(cursor=pymysql.cursors.DictCursor)
 
 window = Window()
 window.loginWindow = Login()
+window.loginWindow.ui.show()
 
 
 con.commit()

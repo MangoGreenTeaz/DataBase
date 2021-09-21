@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page_commodity">
     <widget class="QTableWidget" name="tableWidget_commodity">
@@ -75,32 +75,26 @@
     </widget>
    </widget>
    <widget class="QWidget" name="page_3">
-    <widget class="QPushButton" name="pushButton_6">
+    <widget class="QTableWidget" name="tableWidget_2">
      <property name="geometry">
       <rect>
-       <x>440</x>
-       <y>250</y>
-       <width>75</width>
-       <height>23</height>
+       <x>10</x>
+       <y>10</y>
+       <width>1561</width>
+       <height>801</height>
       </rect>
-     </property>
-     <property name="text">
-      <string>订单</string>
      </property>
     </widget>
    </widget>
    <widget class="QWidget" name="page_4">
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QTableWidget" name="tableWidget">
      <property name="geometry">
       <rect>
-       <x>620</x>
-       <y>260</y>
-       <width>75</width>
-       <height>23</height>
+       <x>10</x>
+       <y>10</y>
+       <width>1561</width>
+       <height>801</height>
       </rect>
-     </property>
-     <property name="text">
-      <string>我的</string>
      </property>
     </widget>
    </widget>

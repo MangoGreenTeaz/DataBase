@@ -1,3 +1,3 @@
 class Window:
     loginWindow = None
-    mainWindow = None
+    userWindow = None
